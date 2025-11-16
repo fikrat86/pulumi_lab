@@ -1,0 +1,17 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::949848044200:oidc-provider/api.pulumi.com/oidc"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "api.pulumi.com/oidc:aud": "fikrat86"
+        }
+      }
+    }
+  ]
+}
