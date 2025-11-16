@@ -4,4 +4,4 @@ config:
   myworkshop:indexDocument: index.html
   myworkshop:path: ./www
 environment:
-  - aws-dev-oidc
+  - default/aws-dev-oidc
