@@ -1,0 +1,15 @@
+values:
+  aws:
+    login:
+      fn::open::aws-login:
+        oidc:
+          roleArn: arn:aws:iam::949848044200:role/OIDC_Identity_Provider_Role
+          sessionName: pulumi-environments-session
+          duration: 1h
+  environmentVariables:
+    AWS_ACCESS_KEY_ID: ${aws.login.accessKeyId}
+    AWS_SECRET_ACCESS_KEY: ${aws.login.secretAccessKey}
+    AWS_SESSION_TOKEN: ${aws.login.sessionToken}
+    AWS_REGION: us-west-2
+  pulumiConfig:
+    aws:region: us-west-2

@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  pulumi-destroy:
-    name: pulumi-destroy
+  pulumi-up:
+    name: pulumi-up
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -25,7 +25,7 @@ jobs:
 
       - uses: pulumi/actions@v5
         with: 
-          command: destroy
+          command: up
           stack-name: fikrat86/static-website-aws-typescript/dev
           work-dir: ./ppinfra
         env:

@@ -1,0 +1,28 @@
+# Pulumi ESC Environment Configuration
+# 
+# This file shows the structure of a Pulumi ESC environment
+# You need to create this in the Pulumi Cloud Console at:
+# https://app.pulumi.com/[your-org]/settings/environments
+#
+# Environment name: aws-dev-oidc
+
+values:
+  aws:
+    login:
+      fn::open::aws-login:
+        oidc:
+          # GitHub OIDC configuration for AWS
+          roleArn: arn:aws:iam::949848044200:role/OIDC_Identity_Provider_Role
+          sessionName: pulumi-environments-session
+          duration: 1h
+  
+  # Environment variables that will be available
+  environmentVariables:
+    AWS_ACCESS_KEY_ID: ${aws.login.accessKeyId}
+    AWS_SECRET_ACCESS_KEY: ${aws.login.secretAccessKey}
+    AWS_SESSION_TOKEN: ${aws.login.sessionToken}
+    AWS_REGION: us-west-2
+  
+  # Pulumi configuration
+  pulumiConfig:
+    aws:region: us-west-2
